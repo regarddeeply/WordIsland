@@ -8,6 +8,8 @@ public class PlayerMoveController : MonoBehaviour, IPointerDownHandler, IPointer
     [SerializeField] private Minion _minion = null;
     [Range(0f, 10f)]
     [SerializeField] private float _maxLength = 2f;
+    [Range(0f, 10f)]
+    [SerializeField] private float _maxSpeed = 3.5f;
 
     public bool Holded { get; private set; } = false;
 
@@ -32,7 +34,7 @@ public class PlayerMoveController : MonoBehaviour, IPointerDownHandler, IPointer
         {
             Vector2 dir = Vector2.ClampMagnitude(((Vector2)Input.mousePosition - _startPosition) / 100f, _maxLength);
             _minion.Direction = dir;
-            _minion.Speed = dir.magnitude;
+            _minion.Speed = dir.magnitude / _maxLength * _maxSpeed;
         }
     }
 }

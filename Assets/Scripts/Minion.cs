@@ -28,4 +28,13 @@ public class Minion : MonoBehaviour
 
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out LetterBlock letterBlock))
+        {
+            print("Letter block was enter");
+            letterBlock.Delete();
+        }
+    }
 }
