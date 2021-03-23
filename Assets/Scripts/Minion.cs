@@ -6,6 +6,8 @@ public class Minion : MonoBehaviour
     [SerializeField] private Transform _target = null;
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Animator _animator = null;
+    [SerializeField] private WordContainer _wordContainer = null;
+    [SerializeField] private GameObject _letteBlockPrefab = null;
 
     private Vector2 _direction = Vector2.zero;
     public Vector2 Direction
@@ -29,12 +31,15 @@ public class Minion : MonoBehaviour
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.TryGetComponent(out LetterBlock letterBlock))
+        if (other.TryGetComponent(out LetterBlock letterBlock))
         {
-            print("Letter block was enter");
-            letterBlock.Delete();
+            if (letterBlock.Active && !_wordContainer.IsFull)
+            {
+                _wordContainer.AddLetter(letterBlock.Letter);
+                letterBlock.Delete();
+            }
         }
     }
 }
