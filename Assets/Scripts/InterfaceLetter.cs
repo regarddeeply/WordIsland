@@ -2,10 +2,33 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(RectTransform))]
 public class InterfaceLetter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _label = null;
+    [SerializeField] private Image _outline = null;
+
+    public RectTransform rectTransform { get; private set; } = null;
+
+    public bool Outlined
+    {
+        get => _outline.enabled;
+        set
+        {
+            if (value)
+            {
+                _outline.enabled = value;
+                StartCoroutine(Utils.CFAlpha(0f, 0.8f, 0.2f, _outline));
+            }
+            else
+            {
+                StartCoroutine(Utils.CFAlpha(0.8f, 0f, 0.2f, _outline));
+                StartCoroutine(Utils.DelayedCall(0.3f, () => _outline.enabled = value));
+            }
+        }
+    }
 
     public string Letter
     {
@@ -33,7 +56,12 @@ public class InterfaceLetter : MonoBehaviour
     {
         if (_deleting) return;
         Hide();
-        StartCoroutine(Utils.DelayedCall(0.55f, () => Destroy(gameObject)));
+        StartCoroutine(Utils.DelayedCall(1f, () => Destroy(gameObject)));
+    }
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
     }
 
     private void Start()

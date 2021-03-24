@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class Utils
 {
@@ -74,5 +75,17 @@ public static class Utils
     public static IEnumerator CFLocalRotation(Quaternion from, Quaternion to, float duration, Transform target)
     {
         return CrossFading(from, to, duration, (rotation) => target.localRotation = rotation, (a, b, c) => Quaternion.Lerp(a, b, c));
+    }
+
+    public static IEnumerator CFAlpha(float from, float to, float duration, Graphic target)
+    {
+        return CrossFading(from, to, duration,
+            (alpha) =>
+            {
+                Color color = target.color;
+                color.a = alpha;
+                target.color = color;
+            },
+            (a, b, c) => Mathf.Lerp(a, b, c));
     }
 }
