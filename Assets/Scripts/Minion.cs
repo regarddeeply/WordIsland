@@ -20,12 +20,24 @@ public class Minion : MonoBehaviour
         }
     }
 
-    public float Speed { get; set; } = 0f;
+    public float Speed
+    {
+        get => _agent.speed;
+        set
+        {
+            _agent.speed = value;
+            _agent.acceleration = value * 4f;
+        }
+    }
+
+    private void Start()
+    {
+        Speed = 0f;
+    }
 
     private void Update()
     {
         _target.position = transform.position + new Vector3(_direction.x, 0f, _direction.y);
-        _agent.speed = Speed;
         _agent.SetDestination(_target.position);
 
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
