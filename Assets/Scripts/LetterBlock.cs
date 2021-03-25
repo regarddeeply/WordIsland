@@ -3,16 +3,26 @@ using UnityEngine;
 
 public class LetterBlock : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro _label = null;
+    [SerializeField] private Transform _body = null;
+    [SerializeField] private TextMeshPro _frontLabel = null;
+    [SerializeField] private TextMeshPro _backLabel = null;
+    [SerializeField] private float _height = 1f;
+    [SerializeField] private float _amplitude = 0.3f;
+    [SerializeField] private float _frequency = 0.3f;
+
+    private float _offset = 0f;
 
     public string Letter
     {
-        get => _label.text;
+        get => _frontLabel.text;
         set
         {
-            _label.text = value;
-            if (_label.text.Length > 1) _label.text = _label.text.Substring(0, 1);
-            _label.text = _label.text.ToUpper();
+            string letter = value;
+            if (letter.Length > 1) letter = letter.Substring(0, 1);
+            letter = letter.ToUpper();
+
+            _frontLabel.text = letter;
+            _backLabel.text = letter;
         }
     }
 
@@ -30,6 +40,12 @@ public class LetterBlock : MonoBehaviour
     private void Start()
     {
         Show();
+        _offset = Random.Range(0f, Mathf.PI);
+    }
+
+    private void Update()
+    {
+        _body.localPosition = Vector3.up * (_height + _amplitude * Mathf.Sin(_offset + Time.realtimeSinceStartup * _frequency));
     }
 
     private void OnEnable()
