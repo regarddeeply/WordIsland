@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
 public class CircleLayoutGroup : MonoBehaviour
@@ -22,7 +20,7 @@ public class CircleLayoutGroup : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             RectTransform child = transform.GetChild(i).GetComponent<RectTransform>();
-            child.position = transform.position + (Vector3)GetPosition(i % _size);
+            child.position = Vector3.Lerp(child.position, transform.position + (Vector3)GetPosition(i % _size), 0.1f);
         }
     }
 

@@ -12,6 +12,8 @@ public class InterfaceLetter : MonoBehaviour
 
     public RectTransform rectTransform { get; private set; } = null;
 
+    public int SelectionIndex { get; set; } = 0;
+
     public bool Outlined
     {
         get => _outline.enabled;
