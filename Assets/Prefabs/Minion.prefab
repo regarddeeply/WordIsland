@@ -1100,7 +1100,8 @@ MonoBehaviour:
   _agent: {fileID: 5741353749676297267}
   _animator: {fileID: 5741353749683698005}
   _wordContainer: {fileID: 0}
-  _letteBlockPrefab: {fileID: 0}
+  _letteBlockPrefab: {fileID: 7960640831392923537, guid: b85c2649942cfcc48a8dcf97304746b8,
+    type: 3}
 --- !u!135 &2111603572278727577
 SphereCollider:
   m_ObjectHideFlags: 0

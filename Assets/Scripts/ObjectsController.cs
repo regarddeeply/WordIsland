@@ -22,7 +22,7 @@ public class ObjectsController : MonoBehaviour
         obj.SetActive(true);
 
         Vector3 scale = obj.transform.localScale;
-        StartCoroutine(Utils.CFLocalScale(Vector3.zero, scale * 1.1f, 0.5f, obj.transform));
-        StartCoroutine(Utils.DelayedCall(0.5f, () => StartCoroutine(Utils.CFLocalScale(obj.transform.localScale, scale, 0.15f, obj.transform))));
+        StartCoroutine(Utils.CFLocalScale(Vector3.zero, scale * 1.2f, 0.2f, obj.transform));
+        StartCoroutine(Utils.DelayedCall(0.2f, () => StartCoroutine(Utils.CFLocalScale(obj.transform.localScale, scale, 0.05f, obj.transform))));
     }
 }

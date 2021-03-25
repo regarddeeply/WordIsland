@@ -9,8 +9,11 @@ public class InterfaceLetter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _label = null;
     [SerializeField] private Image _outline = null;
+    [SerializeField] private Button _button = null;
 
     public RectTransform rectTransform { get; private set; } = null;
+
+    public Button Button => _button;
 
     public int SelectionIndex { get; set; } = 0;
 
@@ -19,6 +22,7 @@ public class InterfaceLetter : MonoBehaviour
         get => _outline.enabled;
         set
         {
+            _button.interactable = !value;
             if (value)
             {
                 _outline.enabled = value;

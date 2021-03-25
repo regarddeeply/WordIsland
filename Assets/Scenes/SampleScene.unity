@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27083126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0}
   m_LocalScale: {x: 0.02857143, y: 0.01, z: 0.02857143}
   m_Children:
   - {fileID: 2007964873}
@@ -163,7 +163,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27083126}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 209761977}
   - component: {fileID: 209761976}
   - component: {fileID: 209761978}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterReflectionMain Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,8 +613,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209761975}
-  m_LocalRotation: {x: 0.22533178, y: 0.030683687, z: 0.0070998534, w: -0.97377294}
-  m_LocalPosition: {x: 1.9321451, y: -37.576225, z: -30.62843}
+  m_LocalRotation: {x: 0.12397664, y: 0.05652809, z: 0.007074795, w: -0.99064845}
+  m_LocalPosition: {x: 23.27095, y: -46.913723, z: -119.739105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1720317248}
@@ -704,6 +704,7 @@ MonoBehaviour:
   _unselectedContent: {fileID: 1177105327}
   _selectedContent: {fileID: 634067178}
   _smoothness: 6
+  _minion: {fileID: 5741353749339525511}
 --- !u!1 &250954680 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1211617601883160, guid: 912275f92af0eae43987638e709f2a77,
@@ -1496,6 +1497,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1939477270973900, guid: bc4f23d04e42f4b559542ad840db6530, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4738923781260352, guid: bc4f23d04e42f4b559542ad840db6530, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1793,7 +1798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813575748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.261, y: 1.2, z: 0.154}
+  m_LocalPosition: {x: -0.261, y: 1.05, z: 0.154}
   m_LocalScale: {x: 0.02857143, y: 0.01, z: 0.02857143}
   m_Children:
   - {fileID: 131380774}
@@ -1808,7 +1813,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813575748}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1957,7 +1962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016348344}
   - component: {fileID: 1016348343}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterReflectionSceneCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2014,8 +2019,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016348342}
-  m_LocalRotation: {x: -0.32023406, y: -0, z: -0, w: 0.94733846}
-  m_LocalPosition: {x: 8.779154, y: -83.33481, z: -72.96889}
+  m_LocalRotation: {x: -0.3385771, y: -0, z: -0, w: 0.94093865}
+  m_LocalPosition: {x: 8.779154, y: -29.979626, z: -23.658888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1720317248}
@@ -2436,7 +2441,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -2978,7 +2983,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705133545}
   m_LocalRotation: {x: 0, y: -0.43931216, z: 0, w: 0.8983345}
-  m_LocalPosition: {x: 0.184, y: 1.2, z: -0.3244}
+  m_LocalPosition: {x: 0.184, y: 1.05, z: -0.3244}
   m_LocalScale: {x: 0.02857143, y: 0.01, z: 0.02857143}
   m_Children:
   - {fileID: 1945330069}
@@ -2993,7 +2998,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705133545}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3026,13 +3031,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720317248}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1720317248
 Transform:
   m_ObjectHideFlags: 0
@@ -3041,7 +3046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720317247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.779154, y: 6.734812, z: -6.831112}
+  m_LocalPosition: {x: -8.779154, y: 8.05, z: -6.831112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 784429681}

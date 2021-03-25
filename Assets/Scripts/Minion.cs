@@ -54,4 +54,13 @@ public class Minion : MonoBehaviour
             }
         }
     }
+
+    public void DropLetter(string letter)
+    {
+        LetterBlock block = Instantiate(_letteBlockPrefab, null).GetComponent<LetterBlock>();
+        block.transform.position = transform.position - transform.forward;
+
+        block.Letter = letter;
+        _wordContainer.Remove(letter);
+    }
 }

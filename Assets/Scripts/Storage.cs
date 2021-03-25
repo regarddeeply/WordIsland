@@ -11,6 +11,7 @@ public class Storage : MonoBehaviour
     [SerializeField] private Transform _unselectedContent = null;
     [SerializeField] private Transform _selectedContent = null;
     [SerializeField] private float _smoothness = 6f;
+    [SerializeField] private Minion _minion = null;
 
     private List<InterfaceLetter> _letters = new List<InterfaceLetter>();
     private Transform[] _unselectedSlots = null;
@@ -45,6 +46,14 @@ public class Storage : MonoBehaviour
         _letters.Add(interfaceLetter);
         int index = _letters.IndexOf(interfaceLetter);
         interfaceLetter.transform.position = _unselectedSlots[index].position;
+        interfaceLetter.Button.onClick.AddListener(() => DropLetter(interfaceLetter));
+    }
+
+    private void DropLetter(InterfaceLetter letter)
+    {
+        _minion.DropLetter(letter.Letter);
+        letter.Delete();
+        _letters.Remove(letter);
     }
 
     public void SelectWord(string word)
