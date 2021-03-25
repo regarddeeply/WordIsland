@@ -5,15 +5,8 @@ using UnityEngine;
 
 public class PlayerWordContainer : WordContainer
 {
-    [Header("Settings")]
-    [SerializeField] private int _containerSize = 6;
-    [SerializeField] private WordConstructor _constructor = null;
     [Header("Interface")]
     [SerializeField] private Storage _storage = null;
-    [Header("Game")]
-    [SerializeField] private ObjectsController _objectsController = null;
-
-    private Dictionary<string, bool> _dictionary = null;
 
     private void Awake()
     {
@@ -46,15 +39,5 @@ public class PlayerWordContainer : WordContainer
             foreach (var symbol in word)
                 Remove(symbol.ToString());
         }
-    }
-
-    private string CheckWords()
-    {
-        string[] letters = _container.Where((letter) => !string.IsNullOrEmpty(letter)).ToArray();
-        string[] words = _constructor.CheckWords(letters);
-
-        foreach (var word in words)
-            if (!_dictionary[word]) return word;
-        return string.Empty;
     }
 }

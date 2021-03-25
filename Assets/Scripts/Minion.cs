@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class Minion : MonoBehaviour
 {
+    [SerializeField] private bool _usePointNavigation = false;
     [SerializeField] private Transform _target = null;
     [SerializeField] private NavMeshAgent _agent = null;
     [SerializeField] private Animator _animator = null;
@@ -20,13 +21,15 @@ public class Minion : MonoBehaviour
         }
     }
 
+    public Vector3 point = Vector3.zero;
+
     public float Speed
     {
         get => _agent.speed;
         set
         {
             _agent.speed = value;
-            _agent.acceleration = value * 4f;
+            _agent.acceleration = value * 10f;
         }
     }
 
@@ -37,8 +40,15 @@ public class Minion : MonoBehaviour
 
     private void Update()
     {
-        _target.position = transform.position + new Vector3(_direction.x, 0f, _direction.y);
-        _agent.SetDestination(_target.position);
+        if (_usePointNavigation)
+        {
+            _agent.SetDestination(point);
+        }
+        else
+        {
+            _target.position = transform.position + new Vector3(_direction.x, 0f, _direction.y);
+            _agent.SetDestination(_target.position);
+        }
 
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
     }

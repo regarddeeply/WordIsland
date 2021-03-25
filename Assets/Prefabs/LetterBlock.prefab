@@ -470,7 +470,7 @@ MonoBehaviour:
   _body: {fileID: 3742809721753732809}
   _frontLabel: {fileID: 6443513829018517278}
   _backLabel: {fileID: 6093032117368741739}
-  _height: 1.5
+  _height: 0.7
   _amplitude: 0.3
   _frequency: 1
 --- !u!54 &4583754695252794360
