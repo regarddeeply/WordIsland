@@ -33,6 +33,28 @@ public class Minion : MonoBehaviour
         }
     }
 
+    private bool _victory = false;
+    public bool Victory
+    {
+        get => _victory;
+        set
+        {
+            _victory = value;
+            _animator.SetBool("Victory", value);
+        }
+    }
+
+    private bool _defeat = false;
+    public bool Defeat
+    {
+        get => _defeat;
+        set
+        {
+            _defeat = value;
+            _animator.SetBool("Defeat", value);
+        }
+    }
+
     private void Start()
     {
         Speed = 0f;
@@ -40,17 +62,25 @@ public class Minion : MonoBehaviour
 
     private void Update()
     {
-        if (_usePointNavigation)
+        if (Victory || Defeat)
         {
-            _agent.SetDestination(point);
+            _agent.isStopped = true;
         }
         else
         {
-            _target.position = transform.position + new Vector3(_direction.x, 0f, _direction.y);
-            _agent.SetDestination(_target.position);
-        }
 
-        _animator.SetFloat("Speed", _agent.velocity.magnitude);
+            if (_usePointNavigation)
+            {
+                _agent.SetDestination(point);
+            }
+            else
+            {
+                _target.position = transform.position + new Vector3(_direction.x, 0f, _direction.y);
+                _agent.SetDestination(_target.position);
+            }
+
+            _animator.SetFloat("Speed", _agent.velocity.magnitude);
+        }
     }
 
     private void OnTriggerStay(Collider other)
