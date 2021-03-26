@@ -4,6 +4,7 @@ using UnityEngine;
 public class LetterBlock : MonoBehaviour
 {
     [SerializeField] private Transform _body = null;
+    [SerializeField] private Transform _shadow = null;
     [SerializeField] private TextMeshPro _frontLabel = null;
     [SerializeField] private TextMeshPro _backLabel = null;
     [SerializeField] private float _height = 1f;
@@ -45,7 +46,13 @@ public class LetterBlock : MonoBehaviour
 
     private void Update()
     {
-        _body.localPosition = Vector3.up * (_height + _amplitude * Mathf.Sin(_offset + Time.realtimeSinceStartup * _frequency));
+        if (Active)
+        {
+            _body.localPosition = Vector3.up * (_height + _amplitude * Mathf.Sin(_offset + Time.realtimeSinceStartup * _frequency));
+        }
+        float scale = 1f - (_body.localPosition.y - _height + _amplitude) / (4f * _amplitude);
+        scale = Mathf.Clamp(scale, 0f, 1f);
+        _shadow.localScale = Vector3.one * scale;
     }
 
     private void OnEnable()
@@ -61,16 +68,23 @@ public class LetterBlock : MonoBehaviour
         StartCoroutine(Utils.DelayedCall(0.55f, () => Active = true));
     }
 
-    public void Hide()
-    {
-        StartCoroutine(Utils.CFLocalScale(_startScale, Vector3.zero, 0.5f, transform));
-        StartCoroutine(Utils.DelayedCall(0.55f, () => gameObject.SetActive(false)));
-    }
-
     public void Delete()
     {
         Active = false;
-        StartCoroutine(Utils.CFLocalScale(_startScale, Vector3.zero, 0.5f, transform));
-        StartCoroutine(Utils.DelayedCall(0.55f, () => Destroy(gameObject)));
+        float from = _body.localPosition.y;
+        float to = from + 8f;
+        float duration = 0.4f;
+
+        StartCoroutine(Utils.CrossFading(from, to, duration,
+            (y) =>
+            {
+                Vector3 pos = _body.localPosition;
+                pos.y = y;
+                pos.x = Mathf.Pow(y, 2f) / (20f * y) * Mathf.Sin(y - from);
+                _body.localPosition = pos;
+            },
+            (a, b, c) => Mathf.Lerp(a, b, Mathf.Pow(c, 2f))));
+
+        StartCoroutine(Utils.DelayedCall(duration * 1.05f, () => Destroy(gameObject)));
     }
 }
