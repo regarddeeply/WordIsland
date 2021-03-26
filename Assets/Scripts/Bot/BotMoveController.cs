@@ -36,7 +36,8 @@ public class BotMoveController : MonoBehaviour
             {
                 if (_targetLetter == null || Vector3.Distance(transform.position, _targetLetter.position) < 0.5f)
                     ChoosePoint();
-                _minion.point = _targetLetter.position;
+                if (_targetLetter != null)
+                    _minion.point = _targetLetter.position;
             }
             else
             {
