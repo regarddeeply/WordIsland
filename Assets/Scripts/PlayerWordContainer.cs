@@ -68,6 +68,8 @@ public class PlayerWordContainer : WordContainer
                 }
                 foreach (var confeti in _confetties)
                     confeti.SetActive(true);
+
+                _storage.Hide();
             }));
         }
     }

@@ -100,4 +100,10 @@ public class Storage : MonoBehaviour
 
         _selectedSlots = null;
     }
+
+    public void Hide()
+    {
+        StartCoroutine(Utils.CFLocalPosition(_unselectedContent.localPosition, _unselectedContent.localPosition + Vector3.up * 500f, 0.3f, _unselectedContent));
+        StartCoroutine(Utils.CFLocalPosition(_selectedContent.localPosition, _selectedContent.localPosition + Vector3.up * 500f, 0.3f, _selectedContent));
+    }
 }
