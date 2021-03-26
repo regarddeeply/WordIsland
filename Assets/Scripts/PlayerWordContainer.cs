@@ -7,10 +7,9 @@ public class PlayerWordContainer : WordContainer
 {
     [Header("Interface")]
     [SerializeField] private Storage _storage = null;
-    [Header("Camera")]
-    [SerializeField] private Transform _camera = null;
-    [SerializeField] private Vector3 _cameraPosition = Vector3.zero;
+    [Header("Victory")]
     [SerializeField] private Vector3 _minionPosition = Vector3.zero;
+    [SerializeField] private GameObject[] _confetties = null;
 
     private void Awake()
     {
@@ -55,15 +54,21 @@ public class PlayerWordContainer : WordContainer
         }
         if (_dictionary.Where((pair) => !pair.Value).Count() == 0)
         {
-            foreach(var minion in FindObjectsOfType<Minion>())
+            StartCoroutine(Utils.DelayedCall(1f, () =>
             {
-                if (minion.tag.Equals("Player"))
+                foreach (var minion in FindObjectsOfType<Minion>())
                 {
-                    minion.Victory = true;
-                    minion.transform.position = _minionPosition;
+                    if (minion.tag.Equals("Player"))
+                    {
+                        minion.Victory = true;
+                        minion.transform.position = _minionPosition;
+                        minion.transform.LookAt(Vector3.back);
+                    }
+                    else minion.Defeat = true;
                 }
-                else minion.Defeat = true;
-            }
+                foreach (var confeti in _confetties)
+                    confeti.SetActive(true);
+            }));
         }
     }
 }

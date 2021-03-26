@@ -65,6 +65,7 @@ public class Minion : MonoBehaviour
         if (Victory || Defeat)
         {
             _agent.isStopped = true;
+            _agent.speed = 0f;
         }
         else
         {
