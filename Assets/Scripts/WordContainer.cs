@@ -17,6 +17,8 @@ public class WordContainer : MonoBehaviour, IWordContainer
 
     public int LetterCount => _container.Length;
 
+    public int AllLetters => LetterCount + _dictionary.Where((pair) => pair.Value).Sum((pair) => pair.Key.Length);
+
     public string GetLetter(int id) => _container[id];
 
     public bool HasWord(string word)
