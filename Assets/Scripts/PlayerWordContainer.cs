@@ -20,14 +20,24 @@ public class PlayerWordContainer : WordContainer
 
     public override void AddLetter(string letter)
     {
-        if (IsFull) return;
-        for (int i = 0; i < _container.Length; i++)
+        if (IsFull)
         {
-            if (string.IsNullOrEmpty(_container[i]))
+            _storage.DropLetter(0);
+            for (int i = 0; i < _container.Length - 1; i++)
+                _container[i] = _container[i + 1];
+            _container[_container.Length - 1] = letter;
+            _storage.AddLetter(letter);
+        }
+        else
+        {
+            for (int i = 0; i < _container.Length; i++)
             {
-                _container[i] = letter;
-                _storage.AddLetter(letter);
-                break;
+                if (string.IsNullOrEmpty(_container[i]))
+                {
+                    _container[i] = letter;
+                    _storage.AddLetter(letter);
+                    break;
+                }
             }
         }
         string word = CheckWords();

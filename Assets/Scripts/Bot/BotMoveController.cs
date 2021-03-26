@@ -63,9 +63,9 @@ public class BotMoveController : MonoBehaviour
             }
             else
             {
-                _targetLetter = null);
+                _targetLetter = null;
                 string[] words = _constructor.Data.Words.Where((word) => word.Contains(_container.GetLetter(0)) && _container.HasWord(word)).ToArray();
-                if (words != null || words.Length > 0)
+                if (words != null && words.Length > 0)
                     _targetLetter = GetNearestLetter(words[0]);
             }
             _busy = true;

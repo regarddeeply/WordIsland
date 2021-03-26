@@ -49,6 +49,12 @@ public class Storage : MonoBehaviour
         interfaceLetter.Button.onClick.AddListener(() => DropLetter(interfaceLetter));
     }
 
+    public void DropLetter(int index)
+    {
+        InterfaceLetter letter = _letters[index];
+        DropLetter(letter);
+    }
+
     private void DropLetter(InterfaceLetter letter)
     {
         _minion.DropLetter(letter.Letter);

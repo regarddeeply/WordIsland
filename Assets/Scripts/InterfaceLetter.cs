@@ -49,12 +49,12 @@ public class InterfaceLetter : MonoBehaviour
 
     private void Show()
     {
-        StartCoroutine(Utils.CFLocalScale(Vector3.zero, Vector3.one, 0.5f, transform));
+        StartCoroutine(Utils.CFLocalScale(Vector3.zero, Vector3.one, 0.2f, transform));
     }
 
     private void Hide()
     {
-        StartCoroutine(Utils.CFLocalScale(Vector3.one, Vector3.zero, 0.5f, transform));
+        StartCoroutine(Utils.CFLocalScale(Vector3.one, Vector3.zero, 0.2f, transform));
     }
 
     private bool _deleting = false;
@@ -62,7 +62,7 @@ public class InterfaceLetter : MonoBehaviour
     {
         if (_deleting) return;
         Hide();
-        StartCoroutine(Utils.DelayedCall(1f, () => Destroy(gameObject)));
+        StartCoroutine(Utils.DelayedCall(0.25f, () => Destroy(gameObject)));
     }
 
     private void Awake()

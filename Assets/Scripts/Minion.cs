@@ -57,7 +57,7 @@ public class Minion : MonoBehaviour
     {
         if (other.TryGetComponent(out LetterBlock letterBlock))
         {
-            if (letterBlock.Active && !_wordContainer.IsFull)
+            if (letterBlock.Active)
             {
                 _wordContainer.AddLetter(letterBlock.Letter);
                 letterBlock.Delete();
