@@ -45,7 +45,7 @@ public class Storage : MonoBehaviour
         interfaceLetter.Letter = letter;
         _letters.Add(interfaceLetter);
         int index = _letters.IndexOf(interfaceLetter);
-        interfaceLetter.transform.position = _unselectedSlots[index].position;
+        interfaceLetter.transform.position = _unselectedSlots[index % _size].position;
         interfaceLetter.Button.onClick.AddListener(() => DropLetter(interfaceLetter));
     }
 
