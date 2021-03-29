@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f321e86df044d2940bf6070335fe12ee, type: 3}
-  m_Name: Test
+  m_Name: BotWordAsset
   m_EditorClassIdentifier: 
   _name: Test Asset
   _words:
   - car
   - palm
   - home
-  - horse

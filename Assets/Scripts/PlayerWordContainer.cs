@@ -62,7 +62,7 @@ public class PlayerWordContainer : WordContainer
                     {
                         minion.Victory = true;
                         minion.transform.position = _minionPosition;
-                        minion.transform.LookAt(Vector3.back);
+                        minion.transform.LookAt(minion.transform.position + Vector3.back * 10f);
                     }
                     else minion.Defeat = true;
                 }
