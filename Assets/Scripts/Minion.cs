@@ -64,6 +64,7 @@ public class Minion : MonoBehaviour
     {
         if (Victory || Defeat)
         {
+            _agent.Warp(transform.position);
             _agent.isStopped = true;
             _agent.speed = 0f;
         }
@@ -78,6 +79,8 @@ public class Minion : MonoBehaviour
             {
                 _target.position = transform.position + new Vector3(_direction.x, 0f, _direction.y);
                 _agent.SetDestination(_target.position);
+                if (Direction != Vector2.zero && Speed != 0f)
+                    transform.LookAt(_target.position);
             }
 
             _animator.SetFloat("Speed", _agent.velocity.magnitude);
